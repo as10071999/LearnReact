@@ -10,7 +10,11 @@ function App() {
   }
   function showList() {
     console.log(listItem);
-    setListItem([...listItem, item]);
+    // setListItem([...listItem, item]);
+    setListItem((prev) => {
+      return [...prev, item];
+    });
+    setItem("");
   }
   return (
     <>
@@ -19,10 +23,17 @@ function App() {
           <br />
           <h1>To Do List</h1>
           <br />
-          <input type="text" placeholder="Add a item" onChange={itemEvent} />
+          <input
+            type="text"
+            placeholder="Add a item"
+            value={item}
+            onChange={itemEvent}
+          />
           <button onClick={showList}>+</button>
           <ol>
-            <li>buy {listItem}</li>
+            {listItem.map((val) => {
+              return <li>{val}</li>;
+            })}
           </ol>
         </div>
       </div>
