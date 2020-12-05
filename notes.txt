@@ -1,0 +1,68 @@
+#Hooks
+=> const [state, setstate] = useState(initialState) 	:state is variable and we can use setstate to change the value of state initialState is the initial value.
+
+
+
+
+
+
+#Js
+=> setinterval(<function>,<time in milliseconds>)   	:Iteratively call the function after the specified time can be used to make digial clock
+=>{ 	
+	var d = new Date();
+  	return d.toLocaleTimeString();           	:return Time in this format: 	23:45:55
+  }
+=> ondblclick()<js> -> onDoubleClick()<react> 
+
+=>{ <input
+          type="text"
+          placeholder="Enter Your Name"
+          value={name}         			: Name is used to get value of input field on say submit button is clicked
+          						: Single Source of Truth so we have same name in event and also in value
+          onChange={inputEvent}
+        />           
+        
+        function inputEvent(event) {
+    		console.log(event.target.value);
+		setname(event.target.value);
+	  }                                      
+  }
+=>{ Previous State in UseState by simply first argument in set<UseState> function.
+    setFullName((preVal) => {
+      console.log(preVal);
+    });
+  }
+  
+=> {        listItem is an array 
+ 	{listItem.map((val) => {
+              return <li>{val}</li>;
+            })}                                            -> shows elements of array
+}
+
+=>{ 	The filter() method creates an array filled with all array elements that pass a test (provided as a function).
+	var ages = [32, 33, 16, 40];
+
+	function checkAdult(age) {
+	  return age >= 18;
+	}
+
+	function myFunction() {
+	  document.getElementById("demo").innerHTML = ages.filter(checkAdult);
+	}
+
+
+............................                 here filter is letting all values of array except the id
+function deleteItem(id) {
+    console.log("Delete iTEM" + id);
+    setListItem((prev) => {
+      return listItem.filter((val, ind) => {
+        if (ind !== id) {
+          return true;
+        } else {
+          return false;
+        }
+      });
+    });
+  }
+
+}
