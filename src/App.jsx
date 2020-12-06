@@ -1,5 +1,7 @@
 import React from "react";
 import { useState } from "react";
+import AddIcon from "@material-ui/icons/Add";
+import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
 
 function App() {
   const [num, setNum] = useState(0);
@@ -19,8 +21,12 @@ function App() {
         <div className="center_div">
           <h1>{num}</h1>
           <div className="btn_div">
-            <button onClick={IncreaseCount}>Increment</button>
-            <button onClick={DecreaseCount}>Decrement</button>
+            <button onClick={IncreaseCount}>
+              <AddIcon />
+            </button>
+            <button onClick={DecreaseCount}>
+              <DeleteOutlineIcon />
+            </button>
           </div>
         </div>
       </div>
