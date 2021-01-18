@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-
+import Image from "./Image";
 function App() {
   return (
     <>
-      <h1>Hello World</h1>
+      <Image />
     </>
   );
 }

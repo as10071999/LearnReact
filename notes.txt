@@ -1,9 +1,16 @@
 #Hooks
 => const [state, setstate] = useState(initialState) 	:state is variable and we can use setstate to change the value of state initialState is the initial value.
-
-
-
-
+=> Use State does 2 things 1: Preserve last value 2: Re-render the componenet
+=> UseEffect - has 2 parameter useEffect(()=>{} , []); function and dependency array Note: if Dependency array is empty that means useEffect will run only 1 time
+=> CleanUp Function:: function in UseEffect to clean up before rerender ie useEffect(()=>{
+                									   ........
+										           ........
+										           return ()=>{
+											                <cleanup function>	
+											              }
+											  });
+=> UseRef: preserve value just like UseState but doesnot re-render, used to access value of any html tag
+=> UseReducer
 
 
 #Js
@@ -50,6 +57,25 @@
 	  document.getElementById("demo").innerHTML = ages.filter(checkAdult);
 	}
 
+=>{
+  Children prop
+  let Book be a component ie
+  
+  const Book  = (props) =>{
+    return(
+      {props.name}
+      {props.children}
+    );
+  };
+
+  .........
+  Let <Book name = 'Time is Running' >
+    <p>
+      All of this is children
+    </p>
+  </Book>
+
+}
 
 ............................                 here filter is letting all values of array except the id
 function deleteItem(id) {
@@ -66,3 +92,6 @@ function deleteItem(id) {
   }
 
 }
+
+=> Context Api-=> to send data from top level component to more than one 
+ level down.
