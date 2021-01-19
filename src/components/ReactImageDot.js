@@ -1,15 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Dot from './Dot';
-
+import Dot from "./Dot";
 const propTypes = {
   // Required functions to handle parent-level state management
   deleteDot: PropTypes.func.isRequired,
   addDot: PropTypes.func.isRequired,
 
   resetDots: PropTypes.func,
-  key : PropTypes.string,
+  key: PropTypes.string,
   // CSS Styles for dots
   dotStyles: PropTypes.object,
 
@@ -40,7 +39,7 @@ const propTypes = {
 
 const defaultProps = {
   pixelCoordinates: false,
-  backgroundSize: 'cover',
+  backgroundSize: "cover",
 };
 
 export default class ReactImageDot extends React.Component {
@@ -54,30 +53,40 @@ export default class ReactImageDot extends React.Component {
   onMouseUp = (e) => {
     const bounds = e.target.getBoundingClientRect();
     this.setState({
-      grabbing: false,
+      grabbing: true,
     });
     this.props.addDot({
       x: e.clientX - bounds.left,
       y: e.clientY - bounds.top,
     });
-  }
+  };
 
   moveDot = (index) => {
     this.setState({
-      grabbing: true,
+      grabbing: false,
     });
     this.props.deleteDot(index);
-  }
+  };
 
   resetDots = () => {
     this.props.resetDots();
-  }
+  };
 
   render() {
     const { grabbing } = this.state;
 
-    const { dots, width, height, styles, dotStyles, backgroundColor, backgroundImageUrl, dotRadius, backgroundSize } = this.props;
-    const grabClass = grabbing ? 'react-image-dot__grabbing' : '';
+    const {
+      dots,
+      width,
+      height,
+      styles,
+      dotStyles,
+      backgroundColor,
+      backgroundImageUrl,
+      dotRadius,
+      backgroundSize,
+    } = this.props;
+    const grabClass = grabbing ? "react-image-dot__grabbing" : "";
 
     return (
       <div className="react-image-dot__container">
@@ -86,13 +95,15 @@ export default class ReactImageDot extends React.Component {
           onMouseUp={this.onMouseUp}
           style={{
             ...styles,
-            background: backgroundColor || `url('${backgroundImageUrl}') no-repeat center center`,
+            background:
+              backgroundColor ||
+              `url('${backgroundImageUrl}') no-repeat center center`,
             width,
             height,
             backgroundSize,
           }}
         >
-          {dots.map((dot, i) =>
+          {dots.map((dot, i) => (
             <Dot
               x={dot.x}
               y={dot.y}
@@ -101,11 +112,11 @@ export default class ReactImageDot extends React.Component {
               moveDot={this.moveDot}
               dotRadius={dotRadius}
             />
-          )}
+          ))}
         </div>
-        {this.props.resetDots &&
+        {this.props.resetDots && (
           <button onClick={this.resetDots}>Reset</button>
-        }
+        )}
       </div>
     );
   }
